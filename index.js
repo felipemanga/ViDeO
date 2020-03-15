@@ -1995,9 +1995,11 @@ var compress = (function(){
 /// ----- AUDIO -----
 
 var readAudio = (function(){
-    let audioContext = new AudioContext();
+    let audioContext;
 
     function downSample( data, bpp, rate, signed ){
+        if(!audioContext)
+            audioContext = new AudioContext();
         let ok, nok;
         let p = new Promise((_ok, _nok) => {
             ok = _ok;
