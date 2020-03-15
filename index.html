@@ -1,0 +1,112 @@
+<html>
+  <head>
+
+    <style>
+
+      @import url('https://fonts.googleapis.com/css?family=Galada|Press+Start+2P');      
+      
+      body, html {
+          background-color: #123;
+          color: #123;
+      }
+      
+      body {
+          font-family: 'Press Start 2P', sans-serif;      
+          text-align: center;
+      }
+
+      p{
+          line-height: 1.5em;
+          margin: 0;
+      }
+
+      h1 {
+          margin: 30px 0 15px 0;
+      }
+
+      #out {
+          background-color: #ABC;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 160px;
+          margin: 0;
+          padding: 0;
+      }
+      
+      #out>li {
+          padding: 10px 5px;
+          border-bottom: 1px solid #234;
+      }
+      
+      #boxContainer {
+          position: relative;
+          height: 100%;
+      }
+
+      #box {
+          background-color: #ABC;
+          position: absolute;
+          width: 320px;
+          height: 255px;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+      }
+
+      #box.border {
+          padding: 100px;
+          background-size: 100%;
+      }
+      
+      #credits {
+          position: absolute;
+          bottom: -20%;
+          color: #ABC;
+          font-size: 0.5em;
+      }
+
+      .lightlink {
+          color: #CDE;
+          text-decoration: none;
+          font-weight: bold;
+      }
+
+      #export {
+          font-family: inherit;
+          position: absolute;
+          top: 170px;
+          right: -110px;
+          display: none;
+      }
+
+      #canvas {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: 10;
+          display: none;
+      }
+
+    </style>
+    <script src="index.js"></script>
+  </head>
+  <body>
+
+    <div id=boxContainer>
+      <div id=box>
+        <canvas id=canvas></canvas>
+	<h1>ViDeO Converter</h1>
+	<p id=caption>Drop MP4 video<br/>HERE!</p>
+	<p id=credits>
+	  <a href="https://talk.pokitto.com/t/video-player/2242">What is this?!</a><br/>
+	</p>
+      </div>
+    </div>
+
+    <ul id=out></ul>
+    
+  </body>
+</html>
