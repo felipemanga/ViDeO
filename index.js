@@ -1,9 +1,15 @@
 let context;
+let currentTime = 0, duration =0;
 
 document.addEventListener("DOMContentLoaded", function(){
     document.body.addEventListener("dragenter", cancelEvent);
     document.body.addEventListener("dragover", cancelEvent);
     document.body.addEventListener("drop", dropFile);
+    document.body.addEventListener("keydown", (evt)=>{
+        if(evt.key == "Escape"){
+            currentTime = duration;
+        }
+    });
     canvas.width = 220;
     canvas.height = 176;
     context = canvas.getContext("2d");
@@ -265,7 +271,7 @@ async function extractFramesFromVideo(videoBlob, fps, tw, th, cb) {
             video.currentTime = 10000000 * Math.random();
         }
         
-        let duration = video.duration;
+        duration = video.duration;
         if(!tries) duration = 0;
         
         let [w, h] = [video.videoWidth, video.videoHeight];
@@ -276,7 +282,7 @@ async function extractFramesFromVideo(videoBlob, fps, tw, th, cb) {
 
         let frames = [];
         let interval = 1 / fps;
-        let currentTime = 0;
+        currentTime = 0;
         let frameCount = 0;
         while(currentTime < duration) {
             try {
