@@ -50,7 +50,7 @@ function dropFile( event ){
             canvas.style.display = "none";
 	    let a = document.createElement('A');
 	    a.href = URL.createObjectURL(
-                new Blob([result.buffer], {type:'application/bin'})
+                new Blob(result, {type:'application/bin'})
             );
 	    a.textContent = name;
 	    a.setAttribute("download", name + ".vdo");
@@ -69,7 +69,7 @@ const FPS = 18, dither = false;
 var palette, audio;
 var prevC, prevI, lout;
 var opts = {
-	colors: 256,
+	colors: 64,
 	method: 2,
 	initColors: 4096,
 	minHueCols: 0,
@@ -152,20 +152,12 @@ function startVideo(data, cb){
     }).then(_=>{
         let tpf = (performance.now() - start) / frameCount;
         console.log(frameCount + " frames encoded at " + (1000/tpf|0) + "fps Data is " + (bytesOut/bytesIn*100|0) + "% of raw size.");
-        
-        let total = 0;
+
         for(let i=0; i<out.length; ++i){
-            total += out[i].length;
+            out[i] = out[i].buffer;
         }
 
-        let acc = new Uint8Array(total);
-        total = 0;
-        for(let i=0; i<out.length; ++i){
-            acc.set(out[i], total);
-            total += out[i].length;
-        }
-
-        cb(acc);
+        cb(out);
     });
 }
 
